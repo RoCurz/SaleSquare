@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="../static/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../static/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../static/images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="../static/images/favicon/site.webmanifest">
+  <link rel="stylesheet" href="../static/css/font.css">
+  <title>SSquare</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <img style="width: 100px; border-radius: 10px;" src="../static/images/logo.png" alt="BigCo Inc. logo" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">
+              Home
+            </a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+          <br />
+          <a type="button" class="btn btn-outline-light me-2" id="signup" href="/signup">
+            SignUp
+          </a>
+          <a type="button" class="btn btn-warning" id="login" href="/login">
+            Login
+          </a>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <img style="width: 300px;" src="../static/images/logo.png" class="rounded mx-auto d-block" alt="logo_sSquare" />
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="../static/images/sales1.png" class="d-block w-100" alt="..." />
+      </div>
+      <div class="carousel-item">
+        <img src="../static/images/sales3.png" class="d-block w-100" alt="..." />
+      </div>
+      <div class="carousel-item">
+        <img src="../static/images/sales2.png" class="d-block w-100" alt="..." />
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <div class="container pb-5 text-center">
+    <h1>Top Deals On Electronics</h1>
+    <div class="row mb-5">
+      {% for item in elec %}
+      <div class="col-md-6 col-lg-3">
+        <img style="width: 200px;" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+          src="../static/files/{{item[0]}}@1.jpg" class="rounded mx-auto d-block mb-2" alt="logo_sSquare" />
+        <p style="margin-bottom: 2px;">{{ item[1] }}</p>
+        <span class="fs-4">&nbsp; &#8377; {{ item[2] }}</span>
+      </div>
+      {% endfor %}
+
+    </div>
+    <h1>Top Deals On Beauty</h1>
+    <div class="row mb-5">
+
+      {% for item in beau %}
+      <div class="col-md-6 col-lg-3">
+        <a href="{{ url_for('product', id=item[0] )}}"><img style="width: 200px;" type="button"
+            src="../static/files/{{item[0]}}@1.jpg" class="rounded mx-auto d-block mb-2" alt="logo_sSquare" /></a>
+
+        <p style="margin-bottom: 2px;">{{item[1]}}</p>
+        <span class="fs-4">&nbsp; &#8377; {{item[2]}}</span>
+      </div>
+      {% endfor %}
+
+    </div>
+    <h1>Top Deals On Fashion</h1>
+    <div class="row mb-5">
+      {% for item in fas %}
+      <div class="col-md-6 col-lg-3">
+        <img style="width: 200px;" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+          src="../static/files/{{item[0]}}@1.jpg" class="rounded mx-auto d-block mb-2" alt="logo_sSquare" />
+        <p style="margin-bottom: 2px;">{{item[1]}}</p>
+        <span class="fs-4">&nbsp; &#8377;{{item[2]}}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="container pb-5">
+    <div class="row">
+      <h1 class="text-center">Featured Top Brands</h1>
+      <div class="col-md-6">
+        <img style="width: 300px;" src="../static/images/apple.png" class="mx-auto d-block mb-3" alt="logo_sSquare"
+          type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" />
+      </div>
+
+      <div class="col-md-6">
+        <img style="width: 300px;" src="../static/images/gucci.png" class="mx-auto d-block mb-3" alt="logo_sSquare"
+          type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" />
+      </div>
+      <div class="col-md-6">
+        <img style="width: 300px;" src="../static/images/nike.png" class="mx-auto d-block mb-3" alt="logo_sSquare"
+          type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" />
+      </div>
+      <div class="col-md-6">
+        <img style="width:300px;" src="../static/images/pp.png" class="mx-auto d-block mb-3" alt="logo_sSquare"
+          type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" />
+      </div>
+    </div>
+  </div>
+  <div class="bg-dark text-white">
+    <footer class="row rowss p-5 border-top">
+      <div class="col-12 col-md-2 mb-3 text-center">
+        <a href="/" class="d-flex mb-3 px-auto text-decoration-none">
+          <img src="../static/images/logo.png" width="100" class='mx-auto'></img>
+        </a>
+        <p class="text-muted">SalesSquare © 2023</p>
+      </div>
+      <div class="col mb-3 text-center">
+        <h5>Know Us</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="/" class="nav-link p-0 text-muted">Home</a></li>
+          <li class="nav-item mb-2"><a href="/" class="nav-link p-0 text-muted">Our Team</a></li>
+        </ul>
+      </div>
+
+      <div class="col mb-3 text-center">
+        <h5>Our Policy</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="/" class="nav-link p-0 text-muted">Return Policy</a></li>
+          <li class="nav-item mb-2"><a href="/" class="nav-link p-0 text-muted">Security</a></li>
+        </ul>
+      </div>
+
+      <div class="col mb-3 text-center">
+        <h5>Want Help?</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="/" class="nav-link p-0 text-muted">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="col mb-3 text-center">
+        <h5>Follow Us On</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="https://www.instagram.com/surya_21rk/"
+              class="nav-link p-0 text-muted">Instagram</a></li>
+          <li class="nav-item mb-2"><a href="https://www.facebook.com/profile.php?id=100009326008564"
+              class="nav-link p-0 text-muted">Facebook</a></li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Login Required</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          You need to login first to access our services
+        </div>
+        <div class="modal-footer">
+          <a type="button" class="btn btn-info me-2" id="signup" href="/signup">
+            SignUp
+          </a>
+          <a type="button" class="btn btn-warning" id="login" href="/login">
+            Login
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal Ends Here -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="../static/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../static/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../static/images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="../static/images/favicon/site.webmanifest">
+  <link rel="stylesheet" href="../static/css/font.css">
+  <title>SSquare</title>
+  <style>
+    .mystyle {
+      border-style: solid;
+    }
+
+    .dot {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border-radius: 100%;
+    }
+
+    .Delivered {
+      background: #85FF3B;
+    }
+
+    .Cancelled {
+      background: #FC1E00;
+    }
+
+    .Delivery {
+      background: #FFF73B;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="{{url_for('home')}}">
+        <img style="width: 100px; border-radius: 10px;" src="../static/images/logo.png" alt="Ourlogo" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{url_for('home')}}">
+              Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('team')}}">
+              About Us
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Categories
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="{{ url_for('products',category='electronics')}}">
+                  Electronics
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{{ url_for('products',category='books')}}">
+                  Books
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{{ url_for('products',category='homeandkitchen')}}">
+                  Home & Kitchen
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{{ url_for('products',category='sports')}}">
+                  Sports
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{{ url_for('products',category='beauty')}}">
+                  Beauty
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{{ url_for('products',category='fashion')}}">
+                  Fashion
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex" role="search" method="POST" action="{{url_for('search')}}">
+          <input class="form-control me-2" type="search" placeholder="Search" name="search_con" aria-label="Search" />
+          <br />
+        </form>
+        <a type="button" class="btn btn-outline-light me-2" id="signup"
+          href="{{url_for('show_personal')}}">
+          <i class='bx bxs-user'></i>  Account
+        </a>
+        <a class="btn btn-warning" id="login" href="{{url_for('cart')}}">
+          <i class='bx bxs-cart'></i> Cart
+        </a>
+      </div>
+    </div>
+  </nav>
+  <img style="width: 300px;" src="../static/images/logo.png" class="rounded mx-auto d-block" alt="logo_sSquare" />
+  <div class='row'>
+    <div class='col-3 text-center p-5'>
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-dark h5"> <i class='bx bxs-user'></i> <span class="d-md-inline d-none">&nbsp; User Details</span></li>
+        <li class="list-group-item list-group-item-dark"><a class="text-decoration-none link-dark"
+            href="{{url_for('myOrders')}}"><i class='bx bxs-shopping-bag-alt'></i> <span class="d-md-inline d-none">&nbsp; My Orders</span></a>
+        </li>
+        <li class="list-group-item list-group-item-dark"><a class="text-decoration-none link-dark"
+            href="{{url_for('mySupplies')}}"><i class='bx bxs-store'></i> <span class="d-md-inline d-none">&nbsp; My Supplies</span></a></li>
+        <li class="list-group-item list-group-item-dark"><a class="text-decoration-none link-dark"
+            href="{{url_for('cart')}}"><i class='bx bxs-cart'></i> <span class="d-md-inline d-none">&nbsp; My Cart</span></a></li>
+        <li class="list-group-item list-group-item-dark"><a class="text-decoration-none link-dark"
+            href="{{url_for('show_personal')}}"><i class='bx bxs-user-account'></i> <span class="d-md-inline d-none">&nbsp; Account Settings</span></a></li>
+            <li class="list-group-item list-group-item-dark"><a class="text-decoration-none link-dark"
+              href="{{url_for('my_products')}}"><i class='bx bxs-objects-vertical-bottom'></i> <span class="d-md-inline d-none">&nbsp; My Products</span></a></li> 
+        <li class="list-group-item list-group-item-dark"><a class="text-decoration-none link-dark" href="/"><i
+              class='bx bx-log-out'></i> <span class="d-md-inline d-none">&nbsp; Logout</span></a></li>
+      </ul>
+    </div>
+    <div class='col-9 p-5'>
+    {% for item in ducts%}
+    <div class='mystyle row p-4'>
+
+      <div class='col-md-3'>
+        <img src="../static/files/{{item[0][0]}}@1.jpg" class="img-fluid mb-4" />
+      </div>
+
+      <div class='col-md-6'>
+
+        <p>{{item[0][1]}}</p>
+        <p class="text-muted">Seller: {{item[1][2]}}</p>
+        <span class="text-decoration-line-through fw-light">
+          &#8377;{{item[0][2]}}
+        </span>
+        <span class="fs-4">&nbsp; &#8377;{{item[0][2]}}</span>
+        <span>&nbsp; 20%</span><br />
+      </div>
+      <div class='col-md-3 my-auto pt-3'>
+        <span class="dot {{item[1][-1].split()[-1]}}"> </span>
+        <span class="status">&nbsp;{{item[1][-1]}}</span>
+
+      </div>
+
+    </div>
+    {% endfor %}
+  </div>
+  </div>
+  <div class="bg-dark text-white">
+    <footer class="row rowss p-5 border-top">
+      <div class="col-12 col-md-2 mb-3 text-center">
+        <a href="{{url_for('home')}}" class="d-flex mb-3 px-auto text-decoration-none">
+          <img src="../static/images/logo.png" width="100" class='mx-auto'></img>
+        </a>
+        <p class="text-muted">SalesSquare © 2023</p>
+      </div>
+      <div class="col mb-3 text-center">
+        <h5>Know Us</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="{{url_for('home')}}" class="nav-link p-0 text-muted">Home</a></li>
+          <li class="nav-item mb-2"><a href="{{url_for('team')}}" class="nav-link p-0 text-muted">Our Team</a></li>
+        </ul>
+      </div>
+
+      <div class="col mb-3 text-center">
+        <h5>Our Policy</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="{{url_for('returnPolicy')}}" class="nav-link p-0 text-muted">Return Policy</a></li>
+          <li class="nav-item mb-2"><a href="{{url_for('security')}}" class="nav-link p-0 text-muted">Security</a></li>
+        </ul>
+      </div>
+
+      <div class="col mb-3 text-center">
+        <h5>Want Help?</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="{{url_for('contact')}}" class="nav-link p-0 text-muted">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="col mb-3 text-center">
+        <h5>Follow Us On</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="https://www.instagram.com/surya_21rk/" class="nav-link p-0 text-muted">Instagram</a></li>
+          <li class="nav-item mb-2"><a href="https://www.facebook.com/profile.php?id=100009326008564" class="nav-link p-0 text-muted">Facebook</a></li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
