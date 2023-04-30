@@ -1,0 +1,132 @@
+body {
+    margin-top:100px ;
+    margin-bottom:100px ;
+    background-color: #faf9f7;
+    font-family: "Roboto", sans-serif;
+    background-image: url("../images/background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+  }
+  
+  .signup-box {
+    position: relative;
+    width: 360px;
+    height: 660px;
+    margin: auto;
+    background-color: white;
+    border-radius: 15px;
+  }
+
+  .login-box {
+    position: relative;
+    width: 360px;
+    height: 450px;
+    margin: auto;
+    background-color: white;
+    border-radius: 15px;
+  }
+
+  .signup-box .close-btn{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 18px;
+    height: 18px;
+    background: #888;
+    color: #eee;
+    text-align: center;
+    line-height: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: larger;
+    transition: all 0.2s ease-in;
+
+  }
+
+  .login-box .close-btn{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 15px;
+    height: 15px;
+    background: #888;
+    color: #eee;
+    text-align: center;
+    line-height: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: larger;
+    transition: all 0.2s ease-in;
+
+  }
+
+  .signup-box .close-btn:hover {
+    opacity: 0.7;;
+    background-color: lightgrey;
+
+  }
+  .login-box .close-btn:hover {
+    opacity: 0.7;;
+    background-color: lightgrey;
+
+  }
+  .btn .btn-success {
+    color: #49c1a2;
+    border-radius: 5px;
+  }
+  
+  h1 {
+    text-align: center;
+    padding-top: 15px;
+  }
+  
+  h4 {
+    text-align: center;
+  }
+  
+  form {
+    width: 300px;
+    margin-left: 20px;
+  }
+  
+  form label {
+    display: flex;
+    margin-top: 20px;
+    font-size: 18px;
+  }
+  
+  form input {
+    width: 100%;
+    padding: 7px;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 6px;
+    outline: none;
+  }
+  input[type="button"] {
+    width: 320px;
+    height: 35px;
+    margin-top: 20px;
+    border: none;
+    background-color: #49c1a2;
+    color: white;
+    font-size: 18px;
+  }
+  p {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 15px;
+  }
+  .para-2 {
+    text-align: center;
+    color: rgb(15, 15, 15);
+    font-size: 15px;
+    padding-top: 20px;
+  }
+  .para-2 a {
+    color: #49c1a2;
+  }
+  
+  
